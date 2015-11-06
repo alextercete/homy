@@ -17,5 +17,5 @@ installer.install()
     console.log('Symlinks created successfully!');
   })
   .fail(function (error) {
-    console.log(error.message);
+    console.error(error.message);
   });
