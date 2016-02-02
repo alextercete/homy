@@ -7,7 +7,7 @@
   },
   "scripts": {
     "lint": "jscs lib/ spec/ && jshint lib/ spec/",
-    "test": "mocha -R dot lib/**/*.spec.js spec/**/*.spec.js",
+    "test": "mocha --colors -R dot lib/**/*.spec.js spec/**/*.spec.js",
     "watch:test": "npm test -- --watch"
   },
   "repository": {
