@@ -2,6 +2,9 @@
   "name": "homy",
   "version": "0.1.0",
   "description": "Symlink your dotfiles across different operating systems",
+  "bin": {
+    "homy": "./bin/homy"
+  },
   "scripts": {
     "lint": "jscs lib/ spec/ && jshint lib/ spec/",
     "test": "mocha -R dot lib/**/*.spec.js spec/**/*.spec.js",
