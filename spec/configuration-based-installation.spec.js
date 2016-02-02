@@ -5,6 +5,8 @@ var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
 var ConfigurationBasedFinder = require('../lib/configuration-based-finder');
+var ConfigurationLister = require('../lib/configuration-lister');
+var ConfigurationReader = require('../lib/configuration-reader');
 var Installer = require('../lib/installer');
 var Symlinker = require('../lib/symlinker');
 
@@ -27,7 +29,9 @@ describe('Configuration-based installation', function () {
       platform: sinon.stub()
     };
 
-    var finder = new ConfigurationBasedFinder(fileSystem, operatingSystem);
+    var lister = new ConfigurationLister(fileSystem);
+    var reader = new ConfigurationReader(fileSystem, operatingSystem);
+    var finder = new ConfigurationBasedFinder(lister, reader);
     var symlinker = new Symlinker(fileSystem, operatingSystem);
     installer = new Installer(finder, symlinker);
   });
