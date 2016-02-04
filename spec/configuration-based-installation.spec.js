@@ -4,9 +4,9 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
-var ConfigurationBasedFinder = require('../lib/configuration-based-finder');
-var ConfigurationLister = require('../lib/configuration-lister');
-var ConfigurationReader = require('../lib/configuration-reader');
+var ConfigurationBasedFinder = require('../lib/finders/configuration-based-finder');
+var ConfigurationLister = require('../lib/finders/configuration-lister');
+var ConfigurationReader = require('../lib/finders/configuration-reader');
 var Installer = require('../lib/installer');
 var Symlinker = require('../lib/symlinker');
 

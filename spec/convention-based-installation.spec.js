@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
-var ConventionBasedFinder = require('../lib/convention-based-finder');
+var ConventionBasedFinder = require('../lib/finders/convention-based-finder');
 var Installer = require('../lib/installer');
 var Symlinker = require('../lib/symlinker');
 
