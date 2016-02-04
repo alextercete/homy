@@ -4,9 +4,9 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
-var ConventionBasedFinder = require('../lib/finders/convention-based-finder');
 var Installer = require('../lib/installer');
 var Symlinker = require('../lib/symlinker');
+var finders = require('../lib/finders');
 
 var Q = require('q');
 var path = require('path');
@@ -25,7 +25,7 @@ describe('Convention-based installation', function () {
       platform: sinon.stub()
     };
 
-    var finder = new ConventionBasedFinder(fileSystem, operatingSystem);
+    var finder = finders.create('convention', fileSystem, operatingSystem);
     var symlinker = new Symlinker(fileSystem, operatingSystem);
     installer = new Installer(finder, symlinker);
   });
