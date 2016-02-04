@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 
+var argv = require('yargs')
+  .boolean('d')
+  .alias('d', 'dryRun')
+  .argv;
+
 var ConventionBasedFinder = require('../lib/convention-based-finder');
+var DryRunSymlinker = require('../lib/dry-run-symlinker');
 var FileSystem = require('../lib/file-system');
 var Installer = require('../lib/installer');
 var OperatingSystem = require('../lib/operating-system');
@@ -9,7 +15,7 @@ var Symlinker = require('../lib/symlinker');
 var fileSystem = new FileSystem();
 var operatingSystem = new OperatingSystem();
 var finder = new ConventionBasedFinder(fileSystem, operatingSystem);
-var symlinker = new Symlinker(fileSystem, operatingSystem);
+var symlinker = argv.dryRun ? new DryRunSymlinker() : new Symlinker(fileSystem, operatingSystem);
 var installer = new Installer(finder, symlinker);
 
 installer.install()
