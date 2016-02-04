@@ -3,18 +3,21 @@
 var argv = require('yargs')
   .boolean('d')
   .alias('d', 'dryRun')
+  .choices('s', ['convention', 'configuration'])
+  .default('s', 'convention')
+  .alias('s', 'strategy')
   .argv;
 
-var ConventionBasedFinder = require('../lib/convention-based-finder');
 var DryRunSymlinker = require('../lib/dry-run-symlinker');
 var FileSystem = require('../lib/file-system');
 var Installer = require('../lib/installer');
 var OperatingSystem = require('../lib/operating-system');
 var Symlinker = require('../lib/symlinker');
+var finders = require('../lib/finders');
 
 var fileSystem = new FileSystem();
 var operatingSystem = new OperatingSystem();
-var finder = new ConventionBasedFinder(fileSystem, operatingSystem);
+var finder = finders.create(argv.strategy, fileSystem, operatingSystem);
 var symlinker = argv.dryRun ? new DryRunSymlinker() : new Symlinker(fileSystem, operatingSystem);
 var installer = new Installer(finder, symlinker);
 
