@@ -34,6 +34,7 @@
     "sinon-chai": "^2.8.0"
   },
   "dependencies": {
+    "js-yaml": "^3.5.2",
     "lodash": "^4.2.0",
     "q": "^1.4.1",
     "q-io": "^1.13.1"
