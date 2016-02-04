@@ -36,7 +36,7 @@ describe('Configuration-based installation', function () {
     installer = new Installer(finder, symlinker);
   });
 
-  it.skip('should symlink files', function (done) {
+  it('should symlink files', function (done) {
     fileSystem.listDirectory.returns(promiseOf([
       'path/to/.vim',
       'path/to/.vimrc',
