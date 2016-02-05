@@ -7,8 +7,8 @@
   },
   "scripts": {
     "lint": "jscs lib/ spec/ && jshint lib/ spec/",
-    "test": "mocha --colors -R dot lib/**/*.spec.js spec/**/*.spec.js",
-    "watch:test": "npm test -- --watch"
+    "test": "mocha --colors --recursive lib/ spec/",
+    "watch:test": "npm test -- --reporter dot --watch"
   },
   "repository": {
     "type": "git",
