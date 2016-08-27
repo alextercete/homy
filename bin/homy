@@ -3,7 +3,7 @@
 var argv = require('yargs')
   .boolean('d')
   .alias('d', 'dryRun')
-  .choices('s', ['convention', 'configuration'])
+  .choices('s', ['convention'])
   .default('s', 'convention')
   .alias('s', 'strategy')
   .argv;
