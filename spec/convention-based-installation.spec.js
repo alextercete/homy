@@ -33,7 +33,7 @@ describe('Convention-based installation', function () {
   it('should symlink files', function (done) {
     fileSystem.listDirectory.returns(promiseOf([
       'path/to/.gitconfig.symlink',
-      'path/to/.gitconfig_include.linux-symlink'
+      'path/to/[linux].gitconfig_include.symlink'
     ]));
 
     operatingSystem.home.returns('/home/user');
@@ -45,7 +45,7 @@ describe('Convention-based installation', function () {
         expect(fileSystem.createSymlink).to.have.been.calledWith(
           joined('/home/user', '.gitconfig'), 'path/to/.gitconfig.symlink');
         expect(fileSystem.createSymlink).to.have.been.calledWith(
-          joined('/home/user', '.gitconfig_include'), 'path/to/.gitconfig_include.linux-symlink');
+          joined('/home/user', '.gitconfig_include'), 'path/to/[linux].gitconfig_include.symlink');
       })
       .done(done);
   });
