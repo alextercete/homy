@@ -4,9 +4,11 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
+var ConventionFinder = require('../lib/finders/convention-finder');
 var Installer = require('../lib/installer');
 var Symlinker = require('../lib/symlinker');
-var finders = require('../lib/finders');
+var TargetLister = require('../lib/finders/target-lister');
+var TargetParser = require('../lib/finders/target-parser');
 
 var Q = require('q');
 var path = require('path');
@@ -25,7 +27,9 @@ describe('Convention-based installation', function () {
       platform: sinon.stub()
     };
 
-    var finder = finders.create('convention', fileSystem, operatingSystem);
+    var targetLister = new TargetLister(fileSystem);
+    var targetParser = new TargetParser(operatingSystem);
+    var finder = new ConventionFinder(targetLister, targetParser);
     var symlinker = new Symlinker(fileSystem, operatingSystem);
     installer = new Installer(finder, symlinker);
   });
