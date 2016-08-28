@@ -5,9 +5,9 @@ var argv = require('yargs')
   .alias('d', 'dryRun')
   .argv;
 
-var ConventionFinder = require('../lib/convention-finder');
 var DryRunSymlinker = require('../lib/dry-run-symlinker');
 var FileSystem = require('../lib/file-system');
+var Finder = require('../lib/finder');
 var Installer = require('../lib/installer');
 var OperatingSystem = require('../lib/operating-system');
 var Symlinker = require('../lib/symlinker');
@@ -18,7 +18,7 @@ var fileSystem = new FileSystem();
 var operatingSystem = new OperatingSystem();
 var targetLister = new TargetLister(fileSystem);
 var targetParser = new TargetParser(operatingSystem);
-var finder = new ConventionFinder(targetLister, targetParser);
+var finder = new Finder(targetLister, targetParser);
 var symlinker = argv.dryRun ? new DryRunSymlinker() : new Symlinker(fileSystem, operatingSystem);
 var installer = new Installer(finder, symlinker);
 

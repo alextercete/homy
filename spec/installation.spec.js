@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
-var ConventionFinder = require('../lib/convention-finder');
+var Finder = require('../lib/finder');
 var Installer = require('../lib/installer');
 var Symlinker = require('../lib/symlinker');
 var TargetLister = require('../lib/target-lister');
@@ -13,7 +13,7 @@ var TargetParser = require('../lib/target-parser');
 var Q = require('q');
 var path = require('path');
 
-describe('Convention-based installation', function () {
+describe('Installation', function () {
   var fileSystem, installer, operatingSystem;
 
   beforeEach(function () {
@@ -29,7 +29,7 @@ describe('Convention-based installation', function () {
 
     var targetLister = new TargetLister(fileSystem);
     var targetParser = new TargetParser(operatingSystem);
-    var finder = new ConventionFinder(targetLister, targetParser);
+    var finder = new Finder(targetLister, targetParser);
     var symlinker = new Symlinker(fileSystem, operatingSystem);
     installer = new Installer(finder, symlinker);
   });
