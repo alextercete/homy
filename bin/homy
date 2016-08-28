@@ -5,14 +5,14 @@ var argv = require('yargs')
   .alias('d', 'dryRun')
   .argv;
 
-var ConventionFinder = require('../lib/finders/convention-finder');
+var ConventionFinder = require('../lib/convention-finder');
 var DryRunSymlinker = require('../lib/dry-run-symlinker');
 var FileSystem = require('../lib/file-system');
 var Installer = require('../lib/installer');
 var OperatingSystem = require('../lib/operating-system');
 var Symlinker = require('../lib/symlinker');
-var TargetLister = require('../lib/finders/target-lister');
-var TargetParser = require('../lib/finders/target-parser');
+var TargetLister = require('../lib/target-lister');
+var TargetParser = require('../lib/target-parser');
 
 var fileSystem = new FileSystem();
 var operatingSystem = new OperatingSystem();

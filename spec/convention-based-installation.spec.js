@@ -4,11 +4,11 @@ var sinon = require('sinon');
 var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
-var ConventionFinder = require('../lib/finders/convention-finder');
+var ConventionFinder = require('../lib/convention-finder');
 var Installer = require('../lib/installer');
 var Symlinker = require('../lib/symlinker');
-var TargetLister = require('../lib/finders/target-lister');
-var TargetParser = require('../lib/finders/target-parser');
+var TargetLister = require('../lib/target-lister');
+var TargetParser = require('../lib/target-parser');
 
 var Q = require('q');
 var path = require('path');
