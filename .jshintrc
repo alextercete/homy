@@ -15,5 +15,6 @@
   "maxcomplexity": 8,
 
   "node": true,
+  "esnext": true,
   "mocha": true
 }

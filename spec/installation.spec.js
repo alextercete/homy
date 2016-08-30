@@ -10,7 +10,6 @@ var Symlinker = require('../lib/symlinker');
 var TargetLister = require('../lib/target-lister');
 var TargetParser = require('../lib/target-parser');
 
-var Q = require('q');
 var path = require('path');
 
 describe('Installation', function () {
@@ -51,7 +50,7 @@ describe('Installation', function () {
         expect(fileSystem.createSymlink).to.have.been.calledWith(
           joined('/home/user', '.gitconfig_include'), 'path/to/[linux].gitconfig_include.symlink');
       })
-      .done(done);
+      .then(done);
   });
 
   function joined(directory, file) {
@@ -59,6 +58,6 @@ describe('Installation', function () {
   }
 
   function promiseOf(value) {
-    return Q.when(value);
+    return Promise.resolve(value);
   }
 });
