@@ -33,7 +33,7 @@ describe('Installation', function () {
     installer = new Installer(finder, symlinker);
   });
 
-  it('should symlink files', function (done) {
+  it('should symlink files', function () {
     fileSystem.listDirectory.returns(promiseOf([
       'path/to/.gitconfig.symlink',
       'path/to/[linux].gitconfig_include.symlink'
@@ -42,15 +42,14 @@ describe('Installation', function () {
     operatingSystem.home.returns('/home/user');
     operatingSystem.platform.returns('linux');
 
-    installer.install()
+    return installer.install()
       .then(function () {
         expect(fileSystem.createSymlink).to.have.callCount(2);
         expect(fileSystem.createSymlink).to.have.been.calledWith(
           joined('/home/user', '.gitconfig'), 'path/to/.gitconfig.symlink');
         expect(fileSystem.createSymlink).to.have.been.calledWith(
           joined('/home/user', '.gitconfig_include'), 'path/to/[linux].gitconfig_include.symlink');
-      })
-      .then(done);
+      });
   });
 
   function joined(directory, file) {
